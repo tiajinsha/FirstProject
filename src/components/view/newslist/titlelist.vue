@@ -1,58 +1,63 @@
 <template>
-    <div>    
-          <div class="mui-card">
-	      <!--页眉，放置标题-->awdwadwadwa
-	      <div class="mui-card-header mui-card-media"><div class="mui-media-body">
-	      <p>发表于 2016-06-30 15:30</p>
-	      </div></div>
-	      <!--内容区-->
-	      <div class="mui-card-content">
-          <img src="./download.jpg" alt=""> 
-          </div>
-	      <!--页脚，放置补充信息或支持的操作-->
-	      <div class="mui-card-footer">
-              哇多久啊十大抠脚大汉无奈地表示的
-          </div>
-          </div>
-
-             <div class="mui-card">
-	      <!--页眉，放置标题-->awdwadwadwa
-	      <div class="mui-card-header mui-card-media"><div class="mui-media-body">
-	      <p>发表于 2016-06-30 15:30</p>
-	      </div></div>
-	      <!--内容区-->
-	      <div class="mui-card-content">
-          <img src="../../../assets/img/download.jpg" alt=""> 
-          </div>
-	      <!--页脚，放置补充信息或支持的操作-->
-	      <div class="mui-card-footer">哇多久啊十大抠脚大汉无奈地表示的</div>
-          </div> 
-       
+    <div class="titlelist">
+            <p class="px">{{list.title}}</p>
+            <p class="py">{{list.ctime}}</p>
+        <div v-html="list.content" class="titlelist"> 
+        </div>   
     </div>
 </template>
 <script>
 export default {
     data(){
         return{
-            
+            list:[]
         }
-    },created(){
-        this.getlunbotu()
     },methods:{
-          methods: {
-  },
-         getlunbotu(){
-       var url="http://api.tianapi.com/txapi/toutiaotxt/?&key=d171ec3c4755783de7dc5b00fed440ee&url=https://www.toutiao.com/i6692902120846262797/"
-                var obj={};
-                this.axios.get(url,{params:obj}).then(result=>{
-                    console.log(result)
-                })
-                }
-    }
+    },created(){
+        var tits=this.$route.query.tit;
+        console.log(this.tits)
+        var url=`http://api.tianapi.com/txapi/htmltext/?key=d171ec3c4755783de7dc5b00fed440ee&url=${tits}`
+             this.$http.get(url).then(result => {
+               this.list=result.body.newslist[0]
+                console.log(this.list.ctime)
+                console.log(this.list) 
+ 
+console.log(result)
+             })}
 }
 </script>
-<style scoped>
+<style  lang="scss">
+.titlelist{
     img{
-        width:100%;
+        text-align: center;
+        width: 354px;
     }
+    .titlelist{
+        margin:0 auto;
+        width:350px;
+          p{
+              font-size: 15px;
+              color: black;
+    }
+    }
+  .titlelist>p:last-child{
+      display: none;
+  }
+   .titlelist>p:first-child{
+      display: none;
+  }
+  .px{
+      font-size: 20px;
+      width: 300px;
+      margin-left: 20px;
+      margin:0 auto;
+      text-align: center;
+      color: black;
+      font-weight: 600;
+      margin-top: 10px;
+  }
+  .py{
+      margin-left: 250px;
+  }
+}
 </style>

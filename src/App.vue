@@ -1,19 +1,11 @@
 <template>
   <div id="app">
- <!--       <mt-header fixed>
-         <router-link title="awda"  to="/" slot="left">
+       <mt-header fixed title="欢迎">
+         <p  class="p1" @click="onClickLeft()" slot="left" v-show="flag==false">
               <mt-button icon="back">返回</mt-button>
-         </router-link>
+         </p>
          <mt-button icon="more" slot="right"></mt-button>
-       </mt-header> -->
-        <van-nav-bar
-        title=""
-        left-text="首页"
-        right-text="按钮"
-        @click-left="onClickLeft()"
-        @click-right="onClickRight()"
-           /> 
-  
+       </mt-header>
       <transition >
        <router-view class="app"></router-view>
       </transition>
@@ -62,25 +54,36 @@
       return  {
         selected:"",
         title:"",
-        x:"dsad"
+        x:"dsad",
+        flag:false
 
       }
     },created(){
-  
+       this.flag=this.$route.path==="/home" ? true :false;
       },methods:{
             onClickLeft() {
-               this.$router.push("/")
+               this.$router.go(-1)
         },
         onClickRight() {
               alert()
+        }
+    },
+    watch:{
+        '$route.path':function(newVal){
+            if(newVal==='/home'){
+                this.flag=true;
+            }else{
+              this.flag=false
+            }
         }
     }
  }
  </script>
  
-<style scoped>
+<style>
    #app{
-     padding-top:0px;
+     padding-top:40px;
+     padding-bottom: 50px;
      overflow-x: hidden;
    }
    img{
@@ -102,4 +105,16 @@
    .mui-bar{
      box-shadow: 0 0 0 !important;
    }
+   .p1{
+     margin-bottom:0 !important;
+   }
+   .mint-header{
+     background: #f7f7f7 !important;
+   }
+  .mint-button{
+    color: black !important;
+  }
+  .mint-header-title{
+    color: black !important;
+  }
 </style>

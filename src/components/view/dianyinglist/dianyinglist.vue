@@ -41,22 +41,19 @@ export default {
        text: '加载中...',
        spinnerType: 'fading-circle'
       });
-            var start=this.start++
+            var start=this.start+=10
             var url =`http://api.douban.com/v2/movie/in_theaters?apikey=0df993c66c0c636e29ecbb5344252a4a`
                 url+=`&start=${start}&count=10`;
               this.$http.jsonp(url, {},{ 
                 headers: {},
                 emulateJSON: true }).then((response) => {
                 var result=response.body.subjects
-              if(start<=20){
                   result=this.list.concat(result);
                 this.list=result
                   Indicator.close();
-                //加载提示取消
-              }else{
-                  this.$messagebox("提示","没有更多的了")
-                  Indicator.close();
-              }
+                  if(start>40){
+                     this.$toast("没有更多的了"); 
+                  }
              });
        },
        /*  */

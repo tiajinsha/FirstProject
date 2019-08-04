@@ -40,7 +40,7 @@ export default new Router({
     },
     {
       path:'/home/newslist/titlelist',
-      component:hometitlelit
+      component:hometitlelit,
     },
     /* ==============电影============== */
     {

@@ -18,7 +18,7 @@
 export default {
 data(){
     return{
-        list:[]
+        list:[],
     }
 },
 props:["lid"],
@@ -30,8 +30,6 @@ methods:{
                 emulateJSON: true }).then((response) =>{
                    var result=response.body
                    this.list=result
-                   console.log(this.list)
-                   console.log(this.lid)
              });  
     }
 },created(){

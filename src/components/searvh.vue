@@ -1,10 +1,30 @@
 <template>
-<div>   <h1 v-show="this.$store.state.login==1">wellcome {{this.unames}}</h1>
+<div> 
+      <h1 v-show="this.$store.state.login==1">wellcome {{this.unames}}</h1>
         <div class="login_container" v-show="this.$store.state.login==0">
             <mt-field label="用户名" :placeholder="unameholder" v-model="uname"></mt-field>
             <mt-field label="密码" type="password" :placeholder="upwdholder" v-model="upwd"></mt-field>
             <mt-button size="large" type="primary" @click="login">登录</mt-button>
         </div>   
+    <!--     <van-cell-group>
+  <van-field
+    v-model="username"
+    required
+    clearable
+    label="用户名"
+    right-icon="question-o"
+    placeholder="请输入用户名"
+    @click-right-icon="$toast('question')"
+  />
+
+  <van-field
+    v-model="password"
+    type="password"
+    label="密码"
+    placeholder="请输入密码"
+    required
+  />
+</van-cell-group> -->
 </div>
 </template>
 <script>

@@ -12,16 +12,18 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 /* 组件 */
 import axios from "./axios"
-import VueResource from 'vue-resource'
 
 
 Vue.use(MintUI);
-Vue.use(VueResource) 
 Vue.use(Vant);
 /* vuex */
 import Vuex from "vuex"
 Vue.use(Vuex)
-
+/* http请求 */
+import VueResource from 'vue-resource'
+Vue.use(VueResource) 
+/* Vue.http.options.root = 'http://api.tianapi.com/generalnews/';*/
+Vue.http.options.emulateJSON = true;
 /* ======================VUEX========================== */
 
 /* ====================================================== */
