@@ -13,7 +13,6 @@
     </div>
 </template>
 <script>
-import { Indicator } from 'mint-ui';
 export default {
     data(){
         return{
@@ -31,7 +30,6 @@ export default {
           },
 
          login(){
-            Indicator.open();
             var yupwd=this.yupwd
             var reg=/^\w{3,11}$/i
             var i=reg.test(this.uname);
@@ -54,8 +52,9 @@ export default {
                 'Content-Type': 'multipart/form-data'
               }
             }
-            var url=`${this.DATA.login}upload`
+            var url=`${this.DATA.homeUrl}upload`
             this.$http.post(url,formData,config).then(function(res){
+                console.log(res)
              if(res.body.code==1){
               this.data=res.body.data
               this.insert()
@@ -70,7 +69,6 @@ export default {
                 var obj={uname:this.uname,upwd:this.upwd,data:this.data};
                 this.axios.get(url,{params:obj}).then(result=>{
                 if(result.data.code==1){
-                      Indicator.close();
                    this.$messagebox("提示","注册成功")
                     this.$router.push("/search")
                 }else{

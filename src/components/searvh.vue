@@ -1,113 +1,116 @@
 <template>
-    <div class="login">  
-        <div v-show="this.$store.state.login==1">wellcome {{unames}}
-        <img class="img" :src="`http://106.12.179.113:3000/${this.data}`" alt="">
+    <div>
+        <mt-popup
+         v-model="popupVisible"
+         position="top">
+           注销成功
+        </mt-popup>
+        <div class="item" ></div>
+        <div class="link">
+            <h3>个人主页</h3>
+            <div class="background" v-if="this.$store.state.login==1" :style="{backgroundImage:`url(http://127.0.0.1:3000/${src})`}"></div>
+            <div class="background"  v-else-if="this.$store.state.login==0"></div>
+            <van-button plain  icon="photo-o" type="primary" @click=wadc()>头像</van-button>
+            <van-button @click="loginUp" plain icon="friends-o" type="info">注销</van-button>
         </div>
-         <div class="login_container" v-show="this.$store.state.login==0">
-            <mt-field label="用户名" :placeholder="unameholder" v-model="uname"></mt-field>
-            <mt-field label="密码" type="password" :placeholder="upwdholder" v-model="upwd"></mt-field>
-            <mt-button size="large" type="danger" @click="login">登录</mt-button>
-            <p>
-            <a @click="insert">没有账号/注册</a>
-            </p>
-        </div>  
-   </div>
+    </div>
+    
 </template>
 <script>
+import { Popup } from 'mint-ui';
+import { ImagePreview } from 'vant';
+import { setInterval } from 'timers';
 export default {
-    data(){
-        return {
-                uname:"tom",
-                upwd:"123",
-                unameholder:"请输入用户名",
-                upwdholder:"请输入密码",
-                unames:"",
-                data:""
-        }   
-    },methods:{
-        insert(){
-            this.$router.push("/search/insert")
-        },
-        login(){
-            /* 获得用户名密码 */
-           var uname=this.uname;
-           var upwd=this.upwd;
-            /* 创建一个震泽表达式 */
-            var reg=/^\w{3,11}$/i
-            var i=reg.test(uname);
-            var u=reg.test(upwd);
-            if(i!=true||u!=true){  
-                this.$toast("用户名或者密码不正确"); 
-                return; 
-            }
-            else{
-
-            }    
-                /* 字母数字下划线3到12位 */
-
-                /* 验证用户密码 */
-                /* 发送ajax请求 */
-                var url="login";
-                var obj={uname,upwd};
-                this.axios.get(url,{params:obj}).then(result=>{
-                    console.log(result.data.data[0].img_url)
-                if(result.data.code==1){
-                    this.data=result.data.data[0].img_url
-                    this.unames=result.config.params.uname
-                   /*  location.href="http://127.0.0.1:8080/#/cart" */
-                   this.$messagebox("提示","成功")
-                 /*   this.$router.push("/") */
-                    this.$store.commit("increment")
-
-                }else{
-                   this.$messagebox("提示","用户名或者密码有误")
-                }
-            })
-        }
-    },
-    created(){
-        
+  data() {
+    return {
+        src:"",
+        uname:"",
+        id:"",
+        a:"",
+        popupVisible:false
     }
-}
+  }
+  ,created(){
+     setTimeout(() => {
+         this.login() 
+     },1000);
+  },methods:{
+      loginUp(){
+          if(this.$store.state.login==0){
+             this.$toast("请登录")
+          }else{
+              this.popupVisible=true
+              var url="loginUp"
+           this.axios.get(url).then(result=>{
+             this.$router.push("/home")
+             this.$store.commit("loginUp")
+           })
+          }
+      },
+      wadc(){
+           if(this.$store.state.login==0){
+                 this.$toast("请登录")
+               }else{
+                   ImagePreview([
+                    `http://127.0.0.1:3000/${this.src}`
+               ]);
+           }
+      },
+      login(){
+           var url="loginMsg"
+        this.axios.get(url).then(result=>{
+           if(result.data.code==1){
+           this.id=result.data.data[0].id
+           this.src=result.data.data[0].img_url
+           this.uname=result.data.data[0].uname
+           }
+        console.log(result)
+       })
+      }
+  }
+}/* destroy()  */
 </script>
-<style lang=scss>
+<style>
 body{
-    background: #f2f2f2 !important;
+    font-family: Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
 }
-.login{
-    width:100vw;
-    height:50vh;
-    background: #f2f2f2 !important;
-    margin-top: 30px;
-    .img{
-        width: 100%;
-    }
-
-  .login_container{
-    padding-top:40px;
-
-}
-.my_button{
-    border:1px solid red !important;
-}
-.login{
-    width:100vw;
-    height:50vh;
-}
-button{
-    width: 50vw;
-    margin: 0 auto;
-    margin-bottom: 10px;
-}
-
-p{
+.item{
+    width:100%;
+    height: 300px;
+    border: 1px solid red;
+    padding-top: 30px; 
     text-align: center;
+    color: red;
+    font-weight: 700;
+    background-image: url('../assets/3 - 副本.jpg');
+    opacity: 0.9;
+    filter: blur(30px);
 }
-.login_container{
-    background: #f2f2f2 !important;
+.link{
+      position: relative;
+      text-align: center;
+      width:100vw;
+      margin-top: -80vw;
 }
-.mint-cell-wrapper{
-    background: #f2f2f2 !important;
+.link h3{
+     margin-top:15%;
 }
+.background{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin:15% auto;
+    background-image: url('../assets/3 - 副本.jpg');
+    background-size:cover;
 }
-</style>
+.mint-popup-top{
+    width: 100% !important;
+    background-color: rgba(0,0,0,0.7)!important;
+    height:50px !important;
+    text-align: center!important;
+    backface-visibility:hidden!important;
+    color:#fff !important;
+    line-height: 50px!important;
+}
+</style>   

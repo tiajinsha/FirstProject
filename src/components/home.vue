@@ -9,23 +9,22 @@
         </mt-swipe>
           <ul class="mui-table-view mui-grid-view mui-grid-9">
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="/home/newslist">
-                  <img src="../assets/news.png" alt="">
+                  <img src="../assets/quanbuxinwen.svg" alt="">
               <div class="mui-media-body">新闻资讯</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-                  <img src="../assets/fenxiang.png" alt="">
+                  <img src="../assets/fenxiang.svg" alt="">
               <div class="mui-media-body">分享</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-                  <img src="../assets/xiazai3.png" alt="">
+                  <img src="../assets/shangpin.svg" alt="">
                <div class="mui-media-body">购物</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-                 <img src="../assets/lianxiwomen.png" alt="">
+                 <img src="../assets/lianxi.svg" alt="">
               <div class="mui-media-body">联系我们</div></router-link></li>
-              <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-               <img src="../assets/shipin.png" alt="">
-             <div class="mui-media-body">视频</div></router-link></li>
-   
+              <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="/home/login">
+                  <img src="../assets/weibiaoti--.png" alt="">
+             <div class="mui-media-body">登陆</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link to="/home/dianyinglist">
-                   <img src="../assets/dianying.png" alt=""> 
+                   <img src="../assets/dianying.svg" alt=""> 
                 <div class="mui-media-body">豆瓣电影</div></router-link></li>
             </ul>
             

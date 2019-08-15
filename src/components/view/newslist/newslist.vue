@@ -1,7 +1,7 @@
 <template>
     <div class="newlist">
-        <van-tabs v-model="active" animated sticky=true> 
-        <van-tab    title="游戏">
+        <van-tabs v-model="active" animated swipeable=true sticky=true> 
+        <van-tab    title="智能">
             <div  v-infinite-scroll="loadMore" infinite-scroll-distance="20"  class="newsList" >
            <span  v-for="(elem,i) of list" :key="i">
               <div class="nav" @click="title(elem.url)">

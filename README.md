@@ -1,17 +1,17 @@
 # cm1
 
-个人项目：移动端网站666，搞了很久终于完了
-## Project setup
+个人项目：移动端新闻购物聚合网站，项目主要是练习为主，兴趣爱好吧搞了很久终于快玩功能还不完善有空慢慢优化完了。。。。。
+## 安装依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 打包
 ```
 npm run build
 ```

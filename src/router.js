@@ -9,6 +9,7 @@ import hometitlelit from './components/view/newslist/titlelist'
 import homedianyinglist from './components/view/dianyinglist/dianyinglist'
 import movietitle from './components/view/dianyinglist/movietitle'
 import insert from './components/view/login/insert'
+import login from "./components/view/login/login";
 Vue.use(Router)
 
 export default new Router({
@@ -33,8 +34,13 @@ export default new Router({
       path: '/search',
       component:search
     },
+    /* =========登陆=========== */
     {
-      path: '/search/insert',
+      path: '/home/login',
+      component:login
+    },
+    {
+      path: '/home/login/insert',
       component:insert
     },
     /* ==========新闻=========== */

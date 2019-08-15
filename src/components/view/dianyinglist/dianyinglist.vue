@@ -24,7 +24,7 @@ export default {
    data(){
        return{
         list:[],
-        start:0
+        start:-10
         
        }
    },
@@ -109,7 +109,7 @@ ul>li p:nth-child(2){
     overflow: hidden;
 }
 ul>li p:nth-child(3){
-    height: 50px;
+    height: 27px;
 }
 ul>li label{
     overflow: hidden;
@@ -117,7 +117,7 @@ ul>li label{
     text-align: center;
 }
 .btn2{
-
+    margin-top:34px;
 }
 .ul{
     height: 250px;

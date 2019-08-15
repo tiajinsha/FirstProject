@@ -1,11 +1,11 @@
 <script>
 /* 登陆接口 */
 const login="http://106.12.179.113:3000/"
-const homeIP="http://127.0.0.1:3000/"
+const homeUrl="http://127.0.0.1:3000/"
 /* 全局新闻api接口 */
 const key="d171ec3c4755783de7dc5b00fed440ee"
 //游戏
-const Gameurl=`http://api.tianapi.com/game/?key=${key}&num=10&page=`
+const Gameurl=`http://api.tianapi.com/ai/?key=${key}&num=10&page=`
 //it
 const Iturl=`http://api.tianapi.com/it/?key=${key}&num=10&page=`
 //汽车
@@ -21,6 +21,6 @@ export default {
     Guourl,
     Titleurl,
     login,
-    homeIP
+    homeUrl
 }
 </script>

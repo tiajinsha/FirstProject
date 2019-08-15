@@ -13,7 +13,10 @@ export default new Vuex.Store({
     },
   mutations: {
     increment(state){
-      state.login="1";
+      state.login=1;
+    },
+    loginUp(state){
+      state.login=0;
     },
     bar(state){
       state.showTabar=true
