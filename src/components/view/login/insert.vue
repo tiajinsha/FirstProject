@@ -51,8 +51,8 @@ export default {
               headers: {
                 'Content-Type': 'multipart/form-data'
               }
-            }
-            var url=`${this.DATA.homeUrl}upload`
+            }/* ============================================ */
+            var url=`${this.DATA.login}upload`
             this.$http.post(url,formData,config).then(function(res){
                 console.log(res)
              if(res.body.code==1){

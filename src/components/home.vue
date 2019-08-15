@@ -1,12 +1,15 @@
 <template>
     <div class="d1">
-        <mt-swipe :auto="4000">
+        <div @click="alert">
+        <mt-swipe :auto="4000" >
 <!--         <mt-swipe-item v-for="(elem,i) of list"  :key="i"><img :src="`https://cn.bing.com/`+elem.url"></mt-swipe-item>
  -->         
         <mt-swipe-item><img src="../assets/img/downloa12d.jpg" alt=""></mt-swipe-item>
-        <mt-swipe-item><img src="../assets/img/download.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item ><img src="../assets/img/download.jpg" alt=""></mt-swipe-item>
         <mt-swipe-item><img src="../assets/img/download1.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="../assets/img/ShastaVideo_ZH-CN10595902413_1920x1080.jpg" alt=""></mt-swipe-item>
         </mt-swipe>
+        </div>
           <ul class="mui-table-view mui-grid-view mui-grid-9">
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="/home/newslist">
                   <img src="../assets/quanbuxinwen.svg" alt="">
@@ -31,6 +34,7 @@
     </div>
 </template>
 <script>
+import { ImagePreview } from 'vant';
 export default {
     data(){
         return{
@@ -41,6 +45,15 @@ export default {
        /*  this.getlunbotu(); */
     },
     methods:{
+        alert(){
+            alert()
+                ImagePreview([
+                     "../assets/img/downloa12d.jpg",
+                     "../assets/img/download.jpg",
+                     "../assets/img/download1.jpg",
+                     "../assets/img/ShastaVideo_ZH-CN10595902413_1920x1080.jpg"
+               ]);
+        }
    /*      getlunbotu(){
              this.$http.get('http://127.0.0.1:3000/bing').then((response) => {
           this.movie = response.data;
@@ -73,6 +86,7 @@ export default {
     }  
     .d1{
         height:460px;
+        margin-top: 10px;
     }
     body{
         background:#f2f2f2;
