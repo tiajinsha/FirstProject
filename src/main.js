@@ -24,7 +24,7 @@ Vue.use(Vuex)
 /* http请求 */
 import VueResource from 'vue-resource'
 Vue.use(VueResource) 
-/* Vue.http.options.root = 'http://api.tianapi.com/generalnews/';*/
+ Vue.http.options.root = 'http://127.0.0.1:3000';
 Vue.http.options.emulateJSON = true;
 /* ======================VUEX========================== */
 

@@ -9,23 +9,23 @@
         </mt-swipe>
           <ul class="mui-table-view mui-grid-view mui-grid-9">
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="/home/newslist">
-                  <img src="../assets/quanbuxinwen.svg" alt="">
+                  <img src="../assets/news.png" alt="">
               <div class="mui-media-body">新闻资讯</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-                  <img src="../assets/fenxiang.svg" alt="">
+                  <img src="../assets/fenxiang.png" alt="">
               <div class="mui-media-body">分享</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-                  <img src="../assets/shangpin.svg" alt="">
+                  <img src="../assets/xiazai3.png" alt="">
                <div class="mui-media-body">购物</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-                 <img src="../assets/lianxi.svg" alt="">
+                 <img src="../assets/lianxiwomen.png" alt="">
               <div class="mui-media-body">联系我们</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="">
-               <img src="../assets/shipin.svg" alt="">
+               <img src="../assets/shipin.png" alt="">
              <div class="mui-media-body">视频</div></router-link></li>
    
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link to="/home/dianyinglist">
-                   <img src="../assets/dianying.svg" alt=""> 
+                   <img src="../assets/dianying.png" alt=""> 
                 <div class="mui-media-body">豆瓣电影</div></router-link></li>
             </ul>
             
@@ -39,7 +39,7 @@ export default {
         }
     },
     created(){
-        this.getlunbotu();
+       /*  this.getlunbotu(); */
     },
     methods:{
    /*      getlunbotu(){
@@ -65,7 +65,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .mint-swipe{
-        height:200px;
+        height:190px;
         .mint-swipe-item{
               img{
                 width:100%;

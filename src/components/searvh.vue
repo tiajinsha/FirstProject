@@ -1,25 +1,28 @@
 <template>
     <div class="login">  
-        <h1 v-show="this.$store.state.login==1">wellcome {{this.unames}}</h1>
-        <div class="login_container" v-show="this.$store.state.login==0">
+        <div v-show="this.$store.state.login==1">wellcome {{unames}}
+        <img class="img" :src="`http://106.12.179.113:3000/${this.data}`" alt="">
+        </div>
+         <div class="login_container" v-show="this.$store.state.login==0">
             <mt-field label="用户名" :placeholder="unameholder" v-model="uname"></mt-field>
             <mt-field label="密码" type="password" :placeholder="upwdholder" v-model="upwd"></mt-field>
             <mt-button size="large" type="danger" @click="login">登录</mt-button>
             <p>
             <a @click="insert">没有账号/注册</a>
             </p>
-        </div>   
+        </div>  
    </div>
 </template>
 <script>
 export default {
     data(){
         return {
-                uname:"",
-                upwd:"",
+                uname:"tom",
+                upwd:"123",
                 unameholder:"请输入用户名",
                 upwdholder:"请输入密码",
-                unames:""
+                unames:"",
+                data:""
         }   
     },methods:{
         insert(){
@@ -47,15 +50,14 @@ export default {
                 var url="login";
                 var obj={uname,upwd};
                 this.axios.get(url,{params:obj}).then(result=>{
+                    console.log(result.data.data[0].img_url)
                 if(result.data.code==1){
+                    this.data=result.data.data[0].img_url
                     this.unames=result.config.params.uname
-                    console.log(this.unames)
-                    console.log(result.config.params.uname)
                    /*  location.href="http://127.0.0.1:8080/#/cart" */
                    this.$messagebox("提示","成功")
                  /*   this.$router.push("/") */
                     this.$store.commit("increment")
-                     console.log(this.$store.state.login)
 
                 }else{
                    this.$messagebox("提示","用户名或者密码有误")
@@ -76,7 +78,12 @@ body{
     width:100vw;
     height:50vh;
     background: #f2f2f2 !important;
-.login_container{
+    margin-top: 30px;
+    .img{
+        width: 100%;
+    }
+
+  .login_container{
     padding-top:40px;
 
 }

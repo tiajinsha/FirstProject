@@ -1,6 +1,6 @@
 <template>
     <div class="newlist">
-        <van-tabs v-model="active" animated>
+        <van-tabs v-model="active" animated sticky=true> 
         <van-tab    title="游戏">
             <div  v-infinite-scroll="loadMore" infinite-scroll-distance="20"  class="newsList" >
            <span  v-for="(elem,i) of list" :key="i">
@@ -15,7 +15,6 @@
               </div>
            </span>
             </div>
-            <van-loading  v-show="this.show==true" size="24px" class="loding">加载中...</van-loading>
         </van-tab>
         <van-tab   title="IT资讯">
               <div  v-infinite-scroll="firstload" infinite-scroll-distance="20"  class="newsList" >
@@ -31,7 +30,6 @@
               </div>
            </span>
             </div>
-            <van-loading  v-show="this.caijinshow==true" size="24px" class="loding">加载中...</van-loading>
         </van-tab>
         <van-tab   title="汽车">
              <div  v-infinite-scroll="rend" infinite-scroll-distance="20"  class="newsList" >
@@ -47,7 +45,6 @@
               </div>
            </span>
             </div>
-            <van-loading  v-show="this.cartShow==true" size="24px" class="loding">加载中...</van-loading>
         </van-tab>
         <van-tab   title="国际">
               <div  v-infinite-scroll="send" infinite-scroll-distance="20"  class="newsList" >
@@ -63,13 +60,12 @@
               </div>
            </span>
             </div>
-            <van-loading  v-show="this.intershow==true" size="24px" class="loding">加载中...</van-loading>
         </van-tab>
         </van-tabs>
-      
     </div>
 </template>
 <script>
+import { Indicator } from 'mint-ui';
 export default {
     data(){
          return{
@@ -77,13 +73,10 @@ export default {
              active:0,
             currentPage:1,
             ds:0,
-            show:"",
             caijin:[],
-            caijinshow:"",
             caijinlist:0,
             cartNew:[],
             cartList:0,
-            cartShow:"",
             intershow:"",
             newinter:0,
             newinterlist:[],
@@ -98,6 +91,7 @@ export default {
         },
         /* ============游戏=================== */
              loadMore(){
+                 Indicator.open();
                  this.show=true
              this.ds++
                  var url=`${this.DATA.Gameurl}${this.ds}`
@@ -108,6 +102,7 @@ export default {
                      data=this.list.concat(data)
                      this.list=data
                      this.show=false
+                     Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
                }
@@ -115,7 +110,7 @@ export default {
 
          },
          firstload(){
-              this.caijinshow=true
+             Indicator.open();
               this.caijinlist++
                 var url=`${this.DATA.Iturl}${this.caijinlist}`
                  this.$http.get(url).then(result => {
@@ -124,14 +119,14 @@ export default {
                      var data=result.body.newslist
                      data=this.caijin.concat(data)
                      this.caijin=data
-                     this.caijinshow=false
+                     Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
                 }
                  })
          },
          rend(){
-               this.cartShow=true
+             Indicator.open();
              this.cartList++
              var url=`${this.DATA.Carurl}${this.cartList}`
                  this.$http.get(url).then(result => {
@@ -140,14 +135,14 @@ export default {
                      var data=result.body.newslist
                      data=this.cartNew.concat(data)
                      this.cartNew=data
-                     this.cartShow=false
+                     Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
                 }
                  })
          },
          send(){
-             this.intershow=true;
+             Indicator.open();
              this.newinter++
              var url=`${this.DATA.Guourl}${this.newinter}`
               this.$http.get(url).then(result => {
@@ -156,7 +151,7 @@ export default {
                      var data=result.body.newslist
                      data=this.newinterlist.concat(data)
                      this.newinterlist=data
-                     this.intershow=false
+                     Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
                 }
@@ -224,6 +219,7 @@ export default {
 .newsList {
         max-height:100vh;
         overflow-y: auto;
+        width:100%;
 }
 .loding{
     text-align: center;

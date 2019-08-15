@@ -68,8 +68,8 @@ body{
   background:#efeff4;
 }
    #app{
-     padding-top:40px;
-     padding-bottom: 50px;
+     padding-top:30px;
+     padding-bottom: 0;
      /* overflow-x: hidden; */
    }
    img{

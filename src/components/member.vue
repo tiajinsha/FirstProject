@@ -1,27 +1,34 @@
 <template>
-    <div>   
-	      {{list.content}}
+    <div>
+    <input type="file" @change="getFile($event)">
+    <button @click="submitForm()">提交</button>
     </div>
 </template>
 <script>
 export default {
-    data(){
-        return{
-            list:[]
-        }
-    },methods:{
-    },created(){
-        var tits=this.$route.query.tit;
-        console.log(this.tits)
-        var url=`http://api.tianapi.com/txapi/htmltext/?key=d171ec3c4755783de7dc5b00fed440ee&url=${tits}`
-             this.$http.get(url).then(result => {
-                this.list=result.body.newslist[0]
-                console.log(this.list.title)
-             })}
+  data() {
+    return {
+              file:""
+    }
+  },methods:{
+    getFile(event) {
+            this.file = event.target.files[0];
+            console.log(this.file);
+          },
+         submitForm(event){
+            let formData = new FormData();
+            formData.append('file', this.file);
+            let config = {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }
+            this.$http.post('http://127.0.0.1:3000/upload',formData,config).then(function(res){
+              if(res.status==200){
+              console.log(res)
+              }
+            })
+         }
+  }
 }
 </script>
-<style scoped>
-    img{
-        width:100%;
-    }
-</style>
