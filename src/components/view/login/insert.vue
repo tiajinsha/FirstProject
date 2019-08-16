@@ -51,8 +51,8 @@ export default {
               headers: {
                 'Content-Type': 'multipart/form-data'
               }
-            }
-            var url=`${this.DATA.homeUrl}upload`
+            }/* ============================================ */
+            var url=`${this.DATA.login}upload`
             this.$http.post(url,formData,config).then(function(res){
                 console.log(res)
              if(res.body.code==1){
@@ -70,7 +70,7 @@ export default {
                 this.axios.get(url,{params:obj}).then(result=>{
                 if(result.data.code==1){
                    this.$messagebox("提示","注册成功")
-                    this.$router.push("/search")
+                    this.$router.push("/home/login")
                 }else{
                    this.$messagebox("提示","用户名已存在")
                 }

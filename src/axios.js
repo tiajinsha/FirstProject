@@ -5,8 +5,8 @@ import axios from "axios"
 /* 发送请求保存session信息 */
 axios.defaults.withCredentials=true
 /* 设置请求基础路径 */
- axios.defaults.baseURL="http://127.0.0.1:3000/"
-/*  axios.defaults.baseURL="http://106.12.179.113:3000/" */
+ /* axios.defaults.baseURL="http://127.0.0.1:3000/" */
+axios.defaults.baseURL="http://106.12.179.113:3000/"
 /* 将axios注册vue实例 */
 Vue.prototype.axios=axios 
 /* 在main，js引入axios。js */

@@ -8,7 +8,7 @@
         <div class="item" ></div>
         <div class="link">
             <h3>个人主页</h3>
-            <div class="background" v-if="this.$store.state.login==1" :style="{backgroundImage:`url(http://127.0.0.1:3000/${src})`}"></div>
+            <div class="background" v-if="this.$store.state.login==1" :style="{backgroundImage:`url(${this.DATA.login}${src})`}"></div>
             <div class="background"  v-else-if="this.$store.state.login==0"></div>
             <van-button plain  icon="photo-o" type="primary" @click=wadc()>头像</van-button>
             <van-button @click="loginUp" plain icon="friends-o" type="info">注销</van-button>
@@ -52,7 +52,8 @@ export default {
                  this.$toast("请登录")
                }else{
                    ImagePreview([
-                    `http://127.0.0.1:3000/${this.src}`
+/*                     `http://127.0.0.1:3000/${this.src}`
+ */                    `${this.DATA.login}${this.src}`
                ]);
            }
       },

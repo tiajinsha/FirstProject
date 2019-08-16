@@ -1,8 +1,8 @@
 <template>
     <div class="login">  
-      <!--   <div v-show="this.$store.state.login==1">wellcome {{unames}}
+       <!--   <div v-show="this.$store.state.login==1">wellcome {{unames}}
         <img class="img" :src="`http://127.0.0.1:3000/${this.data}`" alt="">
-        </div> -->
+        </div>  -->
          <div class="login_container" v-show="this.$store.state.login==0">
             <mt-field label="用户名" :placeholder="unameholder" v-model="uname"></mt-field>
             <mt-field label="密码" type="password" :placeholder="upwdholder" v-model="upwd"></mt-field>
