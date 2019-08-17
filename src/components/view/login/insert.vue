@@ -13,6 +13,7 @@
     </div>
 </template>
 <script>
+import { Indicator } from 'mint-ui';
 export default {
     data(){
         return{
@@ -30,6 +31,7 @@ export default {
           },
 
          login(){
+            
             var yupwd=this.yupwd
             var reg=/^\w{3,11}$/i
             var i=reg.test(this.uname);
@@ -45,6 +47,7 @@ export default {
                 this.$toast("两次密码不一样")
             }
             else{
+            Indicator.open();
             let formData = new FormData();
             formData.append('file', this.file);
             let config = {
@@ -54,7 +57,6 @@ export default {
             }/* ============================================ */
             var url=`${this.DATA.login}upload`
             this.$http.post(url,formData,config).then(function(res){
-                console.log(res)
              if(res.body.code==1){
               this.data=res.body.data
               this.insert()
@@ -65,7 +67,6 @@ export default {
          }},
         insert(){
                 var url="insert";
-                console.log(this.data)
                 var obj={uname:this.uname,upwd:this.upwd,data:this.data};
                 this.axios.get(url,{params:obj}).then(result=>{
                 if(result.data.code==1){
@@ -74,6 +75,7 @@ export default {
                 }else{
                    this.$messagebox("提示","用户名已存在")
                 }
+                 Indicator.close();
             })
         }
         }

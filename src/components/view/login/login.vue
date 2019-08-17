@@ -14,11 +14,12 @@
    </div>
 </template>
 <script>
+import Storage from '../../../Storage/Storage'
 export default {
     data(){
         return {
-                uname:"tom",
-                upwd:"123",
+                uname:"",
+                upwd:"",
                 unameholder:"请输入用户名",
                 upwdholder:"请输入密码",
                 unames:"",
@@ -50,12 +51,12 @@ export default {
                 var url="login";
                 var obj={uname,upwd};
                 this.axios.get(url,{params:obj}).then(result=>{
-                    console.log(result.data.data)
                 if(result.data.code==1){
                     this.data=result.data.data[0].img_url
                     this.unames=result.config.params.uname
                    /*  location.href="http://127.0.0.1:8080/#/cart" */
                    /* this.$messagebox("提示","成功") */
+                    Storage.setLogin('password',obj)
                     this.$router.push("/search")
                     this.$store.commit("increment")
 
@@ -69,6 +70,11 @@ export default {
         if(this.$store.state.login==1){
             this.$toast("你已登录")
         }
+    },
+     mounted(){
+         var list=Storage.getLogin('password')
+         this.uname=list.uname
+         this.upwd=list.upwd
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="newlist">
-        <van-tabs v-model="active" animated swipeable=true sticky=true> 
+        <van-tabs v-model="active" animated swipeable sticky> 
         <van-tab    title="智能">
             <div  v-infinite-scroll="loadMore" infinite-scroll-distance="20"  class="newsList" >
            <span  v-for="(elem,i) of list" :key="i">
@@ -71,24 +71,21 @@ export default {
          return{
              list:[],
              active:0,
-            currentPage:1,
-            ds:0,
-            caijin:[],
-            caijinlist:0,
-            cartNew:[],
-            cartList:0,
-            intershow:"",
-            newinter:0,
-            newinterlist:[],
-            titlex:""
+             currentPage:1,
+             ds:0,
+             caijin:[],
+             caijinlist:0,
+             cartNew:[],
+             cartList:0,
+             intershow:"",
+             newinter:0,
+             newinterlist:[],
+             titlex:""
          }
     },
     created(){
     }
     ,methods:{
-        add(a){
-            console.log(a)
-        },
         /* ============游戏=================== */
              loadMore(){
                  Indicator.open();
@@ -102,6 +99,7 @@ export default {
                      data=this.list.concat(data)
                      this.list=data
                      this.show=false
+                     this.$store.commit("loadMore",this.list)
                      Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
@@ -119,6 +117,7 @@ export default {
                      var data=result.body.newslist
                      data=this.caijin.concat(data)
                      this.caijin=data
+                     this.$store.commit("firstload",this.caijin)
                      Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
@@ -135,6 +134,7 @@ export default {
                      var data=result.body.newslist
                      data=this.cartNew.concat(data)
                      this.cartNew=data
+                     this.$store.commit("rend",this.cartNew)
                      Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
@@ -151,6 +151,7 @@ export default {
                      var data=result.body.newslist
                      data=this.newinterlist.concat(data)
                      this.newinterlist=data
+                     this.$store.commit("send",this.newinterlist)
                      Indicator.close();
                 }else {
                 this.$toast("获取新闻列表失败！");
@@ -159,7 +160,6 @@ export default {
          },
          title(a){
              /* this.$router.push(`/home/newslist/titlelist/`) */
-             console.log(a)
              this.$router.push({
                     path:'/home/newslist/titlelist',
                     query:{
@@ -167,6 +167,20 @@ export default {
                     }
              })
          }
+    },
+    mounted(){
+        if(this.$store.state.loadMore.length>0){
+                this.list=this.$store.state.loadMore
+        }
+        if(this.$store.state.firstload.length>0){
+             this.caijin=this.$store.state.firstload
+        }
+        if(this.$store.state.rend.length>0){
+             this.cartNew=this.$store.state.rend
+        }
+        if(this.$store.state.send.length>0){
+             this.newinterlist=this.$store.state.send
+        }
     }
 }
 </script>

@@ -45,11 +45,18 @@
        this.flag=this.$route.path==="/home" ? true :false;
       },methods:{
             onClickLeft() {
-               this.$router.go(-1)
+               if(this.$route.path==="/member"||this.$route.path==="/search"||this.$route.path==="/shopcar"){
+                this.$router.push("/home")
+               }else{
+                this.$router.go(-1)
+               }
         },
         onClickRight() {
               alert()
         }
+    },
+    mounted(){
+
     },
     watch:{
         '$route.path':function(newVal){

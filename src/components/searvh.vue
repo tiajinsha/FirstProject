@@ -33,7 +33,7 @@ export default {
   ,created(){
      setTimeout(() => {
          this.login() 
-     },1000);
+     },500);
   },methods:{
       loginUp(){
           if(this.$store.state.login==0){
@@ -65,11 +65,10 @@ export default {
            this.src=result.data.data[0].img_url
            this.uname=result.data.data[0].uname
            }
-        console.log(result)
        })
       }
   }
-}/* destroy()  */
+}
 </script>
 <style>
 body{

@@ -9,7 +9,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
       login:0,
-      showTabar:false
+      showTabar:false,
+      loadMore:[],
+      firstload:[],
+      rend:[],
+      send:[]
     },
   mutations: {
     increment(state){
@@ -20,9 +24,34 @@ export default new Vuex.Store({
     },
     bar(state){
       state.showTabar=true
+    },
+    loadMore(state,data){
+        state.loadMore=data
+    },
+    firstload(state,data){
+        state.firstload=data
+    },
+    rend(state,data){
+        state.rend=data
+    },
+    send(state,data){
+        state.send=data
     }
   },
   actions: {
 
   }
 })
+/* state:{cartCount:0}
+  mutations:{
+     increment(state){
+       state.cartCount++;
+     }
+  },
+  getters:{
+     getCartCount(state){
+       return state.cartCount;
+     }
+   }
+  this.$store.commit("increment");
+  App.vue  {{$store.getters. getCartCount}} */

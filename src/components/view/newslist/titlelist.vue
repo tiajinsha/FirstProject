@@ -15,14 +15,9 @@ export default {
     },methods:{
     },created(){
         var tits=this.$route.query.tit;
-        console.log(this.tits)
         var url=`${this.DATA.Titleurl}${tits}`
              this.$http.get(url).then(result => {
                this.list=result.body.newslist[0]
-                console.log(this.list.ctime)
-                console.log(this.list) 
- 
-console.log(result)
              })}
 }
 </script>

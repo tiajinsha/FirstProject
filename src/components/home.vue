@@ -24,13 +24,12 @@
                  <img src="../assets/lianxi.svg" alt="">
               <div class="mui-media-body">联系我们</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link  to="/home/login">
-                  <img src="../assets/weibiaoti--.png" alt="">
+                  <img src="../assets/denglu.svg" alt="">
              <div class="mui-media-body">登陆</div></router-link></li>
               <li class="mui-table-view-cell  mui-media mui-col-xs-4  mui-col-sm-4"><router-link to="/home/dianyinglist">
                    <img src="../assets/dianying.svg" alt=""> 
                 <div class="mui-media-body">豆瓣电影</div></router-link></li>
             </ul>
-            
     </div>
 </template>
 <script>
@@ -42,19 +41,19 @@ export default {
         }
     },
     created(){
-       /*  this.getlunbotu(); */
+         /* this.getlunbotu();  */
     },
     methods:{
         alert(){
-            alert()
                 ImagePreview([
-                     "../assets/img/downloa12d.jpg",
-                     "../assets/img/download.jpg",
-                     "../assets/img/download1.jpg",
-                     "../assets/img/ShastaVideo_ZH-CN10595902413_1920x1080.jpg"
+                     `${this.DATA.login}img/downloa12d.jpg`,
+                     `${this.DATA.login}img/download.jpg`,
+                     `${this.DATA.login}img/download1.jpg`,
+                     `${this.DATA.login}img/ShastaVideo_ZH-CN10595902413_1920x1080.jpg`
+                  
                ]);
-        }
-   /*      getlunbotu(){
+        },
+     /*     getlunbotu(){
              this.$http.get('http://127.0.0.1:3000/bing').then((response) => {
           this.movie = response.data;
           console.log(this.movie);
