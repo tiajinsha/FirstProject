@@ -16,15 +16,18 @@ export default new Vuex.Store({
       send:[]
     },
   mutations: {
+    /* 登录判定 */
     increment(state){
       state.login=1;
     },
     loginUp(state){
       state.login=0;
     },
+    /* bar隐藏 */
     bar(state){
       state.showTabar=true
     },
+    /* 新闻缓存 */
     loadMore(state,data){
         state.loadMore=data
     },
