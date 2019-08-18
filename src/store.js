@@ -13,7 +13,8 @@ export default new Vuex.Store({
       loadMore:[],
       firstload:[],
       rend:[],
-      send:[]
+      send:[],
+      count:0
     },
   mutations: {
     /* 登录判定 */
@@ -29,16 +30,21 @@ export default new Vuex.Store({
     },
     /* 新闻缓存 */
     loadMore(state,data){
-        state.loadMore=data
+      state.loadMore=data
+      /* tablebar定位 */
+        state.count=0
     },
     firstload(state,data){
         state.firstload=data
+        state.count=1
     },
     rend(state,data){
         state.rend=data
+        state.count=2
     },
     send(state,data){
         state.send=data
+        state.count=3
     }
   },
   actions: {

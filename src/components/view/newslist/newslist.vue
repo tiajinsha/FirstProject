@@ -169,6 +169,8 @@ export default {
          }
     },
     mounted(){
+        /* 获取tablebar状态 */
+        this.active=this.$store.state.count
         if(this.$store.state.loadMore.length>0){
                 this.list=this.$store.state.loadMore
         }

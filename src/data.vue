@@ -1,8 +1,8 @@
 <script>
+/* 全局api接口 */
 /* 登陆接口 */
  /* const login="http://106.12.179.113:3000/ */
 const login="http://127.0.0.1:3000/"
-/* 全局新闻api接口 */
 const key="d171ec3c4755783de7dc5b00fed440ee"
 //游戏
 const Gameurl=`http://api.tianapi.com/ai/?key=${key}&num=10&page=`

@@ -68,7 +68,7 @@ export default {
        })
       }
   }
-}/* destroy()  */
+}
 </script>
 <style>
 body{
