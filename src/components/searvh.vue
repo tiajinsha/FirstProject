@@ -70,7 +70,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 body{
     font-family: Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
 }

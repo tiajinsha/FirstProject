@@ -10,6 +10,7 @@ import homedianyinglist from './components/view/dianyinglist/dianyinglist'
 import movietitle from './components/view/dianyinglist/movietitle'
 import insert from './components/view/login/insert'
 import login from "./components/view/login/login";
+import video from "./components/view/dianyinglist/video/video"
 Vue.use(Router)
 
 export default new Router({
@@ -60,6 +61,11 @@ export default new Router({
     {
       path:'/home/dianyinglist/movietitle/:lid',
       component:movietitle,
+      props:true
+    },
+    {
+      path:'/home/video',
+      component:video,
       props:true
     }
  

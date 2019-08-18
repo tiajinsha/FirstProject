@@ -42,13 +42,12 @@
         showBar:false
       }
     },created(){
-      var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+   /*    var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
         db.transaction(function (tx) {
    tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
       console.log(results)
    }, null);
-});
-
+}); */
        this.flag=this.$route.path==="/home" ? true :false;
       },methods:{
             onClickLeft() {
@@ -63,12 +62,12 @@
         }
     },
     mounted(){
-    var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+  /*   var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
     db.transaction(function (tx) {
    tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
    tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "啊是有点尬防守他的依然有我回到家擦口水")');
    tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
-});
+}); */
     },
     watch:{
         '$route.path':function(newVal){
@@ -81,7 +80,6 @@
     }
  }
  </script>
- 
 <style>
 body{
   background:#efeff4;

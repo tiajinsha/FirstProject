@@ -97,7 +97,7 @@ ul>li p:nth-child(1){
     font-weight: 1000;
     color:black;
     overflow: hidden;
-    height: 35px;
+    height: 37px;
     white-space: nowrap;
         text-overflow: ellipsis;
 }

@@ -73,8 +73,10 @@ export default {
     },
      mounted(){
          var list=Storage.getLogin('password')
-         this.uname=list.uname
-         this.upwd=list.upwd
+         if(list!=null){
+             this.uname=list.uname
+             this.upwd=list.upwd
+         }
     }
 }
 </script>
