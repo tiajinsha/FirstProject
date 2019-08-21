@@ -151,6 +151,7 @@ export default {
                      var data=result.body.newslist
                      data=this.newinterlist.concat(data)
                      this.newinterlist=data
+                     /* vuex缓存 */
                      this.$store.commit("send",this.newinterlist)
                      Indicator.close();
                 }else {
@@ -160,6 +161,7 @@ export default {
          },
          title(a){
              /* this.$router.push(`/home/newslist/titlelist/`) */
+             /* 路由传参 */
              this.$router.push({
                     path:'/home/newslist/titlelist',
                     query:{
@@ -171,6 +173,7 @@ export default {
     mounted(){
         /* 获取tablebar状态 */
         this.active=this.$store.state.count
+        /* 新闻缓存 */
         if(this.$store.state.loadMore.length>0){
                 this.list=this.$store.state.loadMore
         }

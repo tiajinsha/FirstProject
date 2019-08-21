@@ -66,7 +66,6 @@ export default new Router({
     {
       path:'/home/video',
       component:video,
-      props:true
     }
  
   ],

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="parsent">
+    <div class="parsent" :style="{backgroundImage:`url(${list.images.small})`}" >
     </div>
     <div class="item">
         <div>
@@ -11,8 +11,10 @@
                     <p>{{list.original_title}}</p>
                     <p>{{this.list.aka[0]}}{{this.list.year}} </p>
                     <p>语言:{{list.languages[0]}}/{{list.countries[0]}}/{{list.genres[0]}}/{{list.genres[1]}}/{{list.genres[2]}}/{{list.pubdates[0]}}/{{list.durations[0]}}</p>
-                    <button>想看</button>
-                    <button>看过</button>
+                    <van-button btn="btn1" size="small" plain  @click="icon(1)"  :icon=btn1icon >按钮</van-button>
+                    <van-button size="small" plain  @click="icon(2)" :icon="btn2icon" >按钮</van-button>
+                    <!--   <button>想看</button>
+                    <button>看过</button> -->
             </span>
         </div>
         <div>
@@ -33,7 +35,7 @@
                {{list.summary}}
             </p>
         </div>
-        <div class="start">
+        <div  class="start">
             演职员
             <ul class="people">
                 <li>
@@ -58,18 +60,50 @@
              <div class="start">
             预告片
             <ul class="video">
-                <li v-for="(elem,i) of list.trailers" :key="i" @click="title(elem.resource_url)">
+                <li class="awd" v-for="(elem,i) of list.trailers" :key="i" @click="title(elem.resource_url)">
                     <img :src=elem.medium  alt="">
-                    <div>
+                    <div class="asd">
                         <span>预告片{{++i}}</span>
                     </div>
+                        <i class="videoicon"><van-icon name="play-circle-o" /></i>
                 </li>
             </ul>
         </div>
         </div>
-       <!--  <video  controls  src="http://vt1.doubanio.com/201908181631/ae03610ba3a18d54700d99121ad815d8/view/movie/M/302500477.mp4"></video> -->
+        <div class="popular">
+            <span><h4>热门评论</h4></span>
+            <div v-for="(elem,i) of list.popular_comments" :key="i" class="popular_list">
+                <div >
+                    <div :style="{backgroundImage:`url(${elem.author.avatar})`}">
+                    </div>
+                    <div>
+                        {{elem.author.name}}<br>
+                        {{elem.created_at}}
+                    </div>
+                </div>
+                <div>
+                   {{elem.content}}
+                </div>
+            </div>
+             <div class="popular">
+            <div v-for="(elem,i) of loadTitle" :key="i" class="popular_list">
+                <div >
+                    <div :style="{backgroundImage:`url(${elem.author.avatar})`}">
+                    </div>
+                    <div>
+                        {{elem.author.name}}<br>
+                        {{elem.title}}
+                    </div>
+                </div>
+                <div>
+                   {{elem.summary}}
+                </div>
+            </div>
+        </div>
+                <div @click="loadMore" class="loadMore" style="text-align:center">查看全部评论>></div>
+        </div>
     </div>
-    <van-rate v-model="value" :count="10" /> 
+    <van-rate readonly v-model="value" :count="10" /> 
 </div>
 </template>
 <script>
@@ -77,20 +111,54 @@ import { ImagePreview } from 'vant';
 export default {
 data(){
     return{
+        btn1icon:"star-o",
+        btn2icon:"medel-o",
         list:[],
         value:"",
-        image:[]
+        image:[],
+        loadTitle:[],
+        src:""
+
     }
 },
 props:["lid"],
 created(){
+    
       this.movietitle()
       console.log(Math.floor(this.list.rating.average))
 },
 methods:{
+    loadMore(){
+        if(this.loadTitle.length<1){
+       for(var elem of this.list.popular_reviews){
+           this.loadTitle.push(elem)
+           console.log(this.loadTitle)
+       }
+        }else{
+            this.$toast("没有了")
+        }
+
+},
+    icon(x){
+        if(x==1){
+            if(this.btn1icon=="star-o"){
+                this.btn1icon="star"
+            }else{
+                 this.btn1icon="star-o"
+                 location.href="http://106.12.179.113"
+            }   
+        }else{
+            if(this.btn2icon=="medel-o"){
+                this.btn2icon="medel"
+            }else{
+                 this.btn2icon="medel-o"
+                  location.href="http://106.12.179.113:3001"
+            }   
+        }
+},
     title(i){
         /* this.$router.push(`/home/video`) */
-        
+        /* 路由传参 */
          this.$router.push({
                     path:'/home/video',
                     query:{
@@ -98,6 +166,7 @@ methods:{
                     }
              })
     },
+    /* 图片详情 */
     add(){
         for(var elem of this.list.photos){
            this.image.push(elem.image)
@@ -111,6 +180,7 @@ methods:{
                 emulateJSON: true }).then((response) =>{
                    var result=response.body
                    this.list=result
+                   console.log(result)
                    this.value=Math.floor(response.body.rating.average)
              });  
     }
@@ -118,6 +188,70 @@ methods:{
 }
 </script>
 <style scoped lang="scss">
+.popular{
+    .loadMore{
+        height: 40px;
+        margin-bottom: 25px;
+        margin-top:10px;
+        border-bottom: 1px solid;
+    }
+    span h4{
+        text-align: center;
+        padding-bottom: 5px;
+    }
+    h4{
+    border-bottom: 1px solid;
+
+    }
+    width: 94%;
+    margin:0 auto;
+    .popular_list{
+        width: 100%;
+        border-bottom: 1px solid;
+        div:nth-child(1){
+            display: flex;
+            width:100%;
+            height: 50px;
+            div:nth-child(1){
+                width: 50px;
+                border-radius: 50%;
+                margin-top:5px;
+                /* 图片 */
+            }
+            div:nth-child(2){
+                line-height:25px;
+                margin-left: 5px;
+                font-weight: 600;
+                
+            }
+        }
+        div:nth-child(2){
+                  width:100%;
+            text-indent: 20px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            font-family: "微软雅黑";
+        }
+    }
+}
+.awd{
+    position: relative;
+}
+.videoicon{
+    position: absolute;
+    top: 29%;
+    color: white;
+    font-size: 50px;
+    left: 47%;
+
+}
+.van-button--small{
+    margin-left: 10px;
+}
+span strong{
+    color: yellow;
+}
 video{
     width: 100%;
 }
@@ -156,7 +290,7 @@ video{
                img{
                    width: 100px;
                    height: 140px;
-                   margin-left: 0;
+                   margin-left:-15px;
                }
            }
             span:nth-child(2){
@@ -228,6 +362,7 @@ video{
            width:100%;
            /* height: 300px; */
            position: static;
+           text-align: center;
            p{
                   font-size: 15px;
                   color: #191919; 
@@ -241,6 +376,7 @@ video{
            height: 230px;
            width:100%;
            font-weight: 500;
+           text-align: center;
             .video{
                     white-space: nowrap;
                     overflow-x: auto;
@@ -292,7 +428,7 @@ video{
    }
    .score{
        width:100%;
-       height: 500px;
+       height: 280px;
        margin-top: 10px;
    }
 </style>

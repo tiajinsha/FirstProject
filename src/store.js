@@ -14,9 +14,14 @@ export default new Vuex.Store({
       firstload:[],
       rend:[],
       send:[],
-      count:0
+      count:0,
+      title:""
     },
   mutations: {
+    /* 标题 */
+    title(state,data){
+      state.title=data
+    },
     /* 登录判定 */
     increment(state){
       state.login=1;

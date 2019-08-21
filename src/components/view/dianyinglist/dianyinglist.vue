@@ -58,6 +58,7 @@ export default {
        },
        /*  */
        title(e){
+           /* data-id传参 */
            var cb= e.target.dataset.id;
             this.$router.push(`/home/dianyinglist/movietitle/${cb}`)
        }
