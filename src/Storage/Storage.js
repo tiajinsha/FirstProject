@@ -1,3 +1,4 @@
+/* 登陆成功后保存账号密码 */
 var Storage={
     setLogin(key,val){
         localStorage.setItem(key,JSON.stringify(val));

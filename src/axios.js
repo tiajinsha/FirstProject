@@ -9,7 +9,6 @@ axios.defaults.withCredentials=true
  /* axios.defaults.baseURL="http://127.0.0.1:3000/"  */ 
 /* axios.defaults.baseURL="http://106.12.179.113:3000/" */
 axios.defaults.baseURL=data.login
-console.log(data.login)
 /* 将axios注册vue实例 */
 Vue.prototype.axios=axios 
 /* 在main，js引入axios。js */

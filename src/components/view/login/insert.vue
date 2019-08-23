@@ -55,7 +55,7 @@ export default {
                 'Content-Type': 'multipart/form-data'
               }
             }/* ============================================ */
-            var url=`${this.DATA.login}upload`
+            var url=`${this.DATA.login}fenxiang/upload`
             this.$http.post(url,formData,config).then(function(res){
              if(res.body.code==1){
               this.data=res.body.data
@@ -66,7 +66,7 @@ export default {
             })
          }},
         insert(){
-                var url="insert";
+                var url="login/insert";
                 var obj={uname:this.uname,upwd:this.upwd,data:this.data};
                 this.axios.get(url,{params:obj}).then(result=>{
                 if(result.data.code==1){

@@ -48,7 +48,7 @@ export default {
 
                 /* 验证用户密码 */
                 /* 发送ajax请求 */
-                var url="login";
+                var url="login/login";
                 var obj={uname,upwd};
                 this.axios.get(url,{params:obj}).then(result=>{
                 if(result.data.code==1){

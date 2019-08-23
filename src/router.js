@@ -11,6 +11,7 @@ import movietitle from './components/view/dianyinglist/movietitle'
 import insert from './components/view/login/insert'
 import login from "./components/view/login/login";
 import video from "./components/view/dianyinglist/video/video"
+import fenxiang from "./components/view/fenxiang/fenxiang"
 Vue.use(Router)
 
 export default new Router({
@@ -43,6 +44,11 @@ export default new Router({
     {
       path: '/home/login/insert',
       component:insert
+    },
+    /* ===========分享============== */
+    {
+      path: '/home/fenxiang',
+      component:fenxiang
     },
     /* ==========新闻=========== */
     {

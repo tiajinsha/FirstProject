@@ -119,7 +119,7 @@ body{
    }
    img{
      font-size: 20px;
-   }
+   }/* 专场动画哈哈哈哈哈哈哈哈哈哈哈哈 */
    .v-enter{
      opacity: 0;
      transform: translateX(100%);

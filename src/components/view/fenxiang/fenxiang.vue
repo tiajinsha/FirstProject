@@ -28,7 +28,6 @@ export default {
   }
   ,methods:{
     upload(){
-      console.log(this.fileList.length)
         if(this.dbs&&this.fileList.length>0){
             this.insert()
         }else{
@@ -36,11 +35,16 @@ export default {
         }
     },
     login(){
-      console.log(this.data)
       var obj={data:this.data,title:this.dbs}
         var url=`${this.DATA.login}common/title`
         this.axios.get(url,{params:obj}).then((res)=>{
               console.log(res)
+              if(res.data.code==1){
+                  this.$toast("上传成功")
+                  this.currentRate=0
+                  this.dbs=""
+                  this.fileList=[]
+              }
         }) },   
     /* 多图上传 */
     insert(){
@@ -59,10 +63,12 @@ export default {
      var url=`${this.DATA.login}fenxiang/upload-multi`
      this.axios.post(url,formData,config).then((res)=>{
        console.log(res)
-        res.data.forEach((elem)=>{
-          this.data.push(elem)
-       }) 
-       this.login()
+       if(res.status==200){
+           res.data.forEach((elem)=>{
+               this.data.push(elem)
+             }) 
+            this.login()
+         }
      })
     }},
 }

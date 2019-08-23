@@ -109,7 +109,7 @@ server.get("/bing",(req,res)=>{
     })
   })
 })
-/* ====================================图片上传======================================== */
+/* ====================================图片头像 上传======================================== */
 var createFolder = function(folder){
     try{
         fs.accessSync(folder); 
@@ -126,7 +126,7 @@ var storage = multer.diskStorage({
         cb(null, uploadFolder);    // 保存的路径，备注：需要自己创建
     },
     filename: function (req, file, cb) {
-        // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
+        // 将保存文件名设置为 字段名 + 时间戳，
         cb(null,file.originalname);  
     }
 });
@@ -148,7 +148,6 @@ server.post("/upload",upload.single('file'),(req,res,next)=>{
 server.get('/form', function(req, res, next){
   var form = fs.readFileSync('./form.html', {encoding: 'utf8'});
   res.send(form);
-  console.log(123)
 });
 /* ========================================================================== */
 var upload = multer({ dest: 'upload/' });

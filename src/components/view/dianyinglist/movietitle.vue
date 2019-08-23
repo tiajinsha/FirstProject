@@ -11,8 +11,8 @@
                     <p>{{list.original_title}}</p>
                     <p>{{this.list.aka[0]}}{{this.list.year}} </p>
                     <p>语言:{{list.languages[0]}}/{{list.countries[0]}}/{{list.genres[0]}}/{{list.genres[1]}}/{{list.genres[2]}}/{{list.pubdates[0]}}/{{list.durations[0]}}</p>
-                    <van-button btn="btn1" size="small" plain  @click="icon(1)"  :icon=btn1icon >按钮</van-button>
-                    <van-button size="small" plain  @click="icon(2)" :icon="btn2icon" >按钮</van-button>
+                    <van-button btn="btn1" size="small" plain  @click="icon(1)"  :icon=btn1icon >想看</van-button>
+                    <van-button size="small" plain  @click="icon(2)" :icon="btn2icon" >看过</van-button>
                     <!--   <button>想看</button>
                     <button>看过</button> -->
             </span>

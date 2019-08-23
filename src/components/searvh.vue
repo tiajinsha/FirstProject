@@ -40,7 +40,7 @@ export default {
              this.$toast("请登录")
           }else{
               this.popupVisible=true
-              var url="loginUp"
+              var url="login/loginUp"
            this.axios.get(url).then(result=>{
              this.$router.push("/home")
              this.$store.commit("loginUp")
@@ -58,7 +58,7 @@ export default {
            }
       },
       login(){
-           var url="loginMsg"
+           var url="login/loginMsg"
         this.axios.get(url).then(result=>{
            if(result.data.code==1){
            this.id=result.data.data[0].id
