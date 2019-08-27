@@ -8,8 +8,9 @@
         <div class="item" ></div>
         <div class="link">
             <h3>个人主页</h3>
-            <div class="background" v-if="this.$store.state.login==1" :style="{backgroundImage:`url(${this.DATA.login}${src})`}"></div>
-            <div class="background"  v-else-if="this.$store.state.login==0"></div>
+            <div style="margin-bottom:15px;" class="background" v-if="this.$store.state.login==1" :style="{backgroundImage:`url(${this.DATA.login}${src})`}"></div>
+            <div style="margin-bottom:15px;"  class="background"  v-else-if="this.$store.state.login==0"></div>
+            <p>{{uname}}</p>
             <van-button plain  icon="photo-o" type="primary" @click=wadc()>头像</van-button>
             <van-button @click="loginUp" plain icon="friends-o" type="info">注销</van-button>
         </div>
@@ -27,13 +28,14 @@ export default {
         uname:"",
         id:"",
         a:"",
-        popupVisible:false
+        popupVisible:false,
+        list:[]
     }
   }
   ,created(){
      setTimeout(() => {
          this.login() 
-     },500);
+     },1);
   },methods:{
       loginUp(){
           if(this.$store.state.login==0){
@@ -42,14 +44,14 @@ export default {
               this.popupVisible=true
               var url="login/loginUp"
            this.axios.get(url).then(result=>{
-             this.$router.push("/home")
+               this.$router.push("/home")
              this.$store.commit("loginUp")
            })
           }
       },
       wadc(){
-           if(this.$store.state.login==0){
-                 this.$toast("请登录")
+          if(this.$store.state.login==0){
+              this.$toast("请登录")
                }else{
                    ImagePreview([
 /*                     `http://127.0.0.1:3000/${this.src}`
@@ -59,7 +61,9 @@ export default {
       },
       login(){
            var url="login/loginMsg"
-        this.axios.get(url).then(result=>{
+           this.axios.get(url).then(result=>{
+               this.list=result
+               console.log(result)
            if(result.data.code==1){
            this.id=result.data.data[0].id
            this.src=result.data.data[0].img_url
@@ -92,6 +96,10 @@ body{
       width:100vw;
       margin-top: -80vw;
 }
+.link p{
+   font-size:25px;
+   color:#d94c4c;
+}
 .link h3{
      margin-top:15%;
 }
@@ -99,7 +107,6 @@ body{
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 2px solid white;
     margin:15% auto;
     background-image: url('../assets/3 - 副本.jpg');
     background-size:cover;

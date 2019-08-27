@@ -15,7 +15,8 @@ export default new Vuex.Store({
       rend:[],
       send:[],
       count:0,
-      title:""
+      title:"",
+      img:[]
     },
   mutations: {
     /* 标题 */
@@ -50,7 +51,11 @@ export default new Vuex.Store({
     send(state,data){
         state.send=data
         state.count=3
-    }
+    },
+    //图片缓存
+    img(state,data){
+      state.img=data
+  }
   },
   actions: {
 

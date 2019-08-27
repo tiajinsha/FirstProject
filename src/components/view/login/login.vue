@@ -68,7 +68,7 @@ export default {
     },
     created(){
         if(this.$store.state.login==1){
-            this.$toast("你已登录")
+            this.$router.push("/search")
         }
     },
      mounted(){

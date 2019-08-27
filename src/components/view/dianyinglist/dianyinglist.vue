@@ -69,7 +69,7 @@ export default {
 img{
     margin-top: 20px;
       height:250px;
-       border: 3px solid #ccc;
+        box-shadow: 0 0 6px #999;
         margin-left:10px;
         width: 177px;
 }
@@ -77,7 +77,7 @@ ul{
     width:100%;
     height:290px;
     display: flex;
-    border-bottom: 2px solid #ccc;
+     box-shadow: 0 0 4px #999;
 }
 ul>li{
     width:196px;

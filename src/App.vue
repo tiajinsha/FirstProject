@@ -12,21 +12,21 @@
         <nav class="mui-bar mui-bar-tab" v-show="flag==true">    
             <router-link class="mui-tab-item" to="/home">
             <span class="mui-icon mui-icon-home"></span> 
-           <span class="mui-tab-label">首页</span>
-            </router-link>
+            <span class="mui-tab-label">首页</span>
+              </router-link>
               <router-link class="mui-tab-item  " to="/member">
-           <span class="mui-icon mui-icon-pengyouquan"></span>
-          <span class="mui-tab-label">会员</span>
-            </router-link>
+            <span class="mui-icon mui-icon-pengyouquan"></span>
+            <span class="mui-tab-label">说说</span>
+              </router-link>
               <router-link class="mui-tab-item " to="/shopcar">
-          <span class="mui-icon mui-icon-extra  mui-icon-extra-cart  "><span class="mui-badge">9</span></span>
-          <span class="mui-tab-label">购物车</span>
-            </router-link>
+            <span class="mui-icon mui-icon-extra  mui-icon-extra-cart  "><span class="mui-badge">9</span></span>
+            <span class="mui-tab-label">购物车</span>
+              </router-link>
               <router-link class="mui-tab-item " to="/search">
             <span class="mui-icon mui-icon-contact "></span>
-           <span class="mui-tab-label" v-show="this.$store.state.login==1">我的</span>
+            <span class="mui-tab-label" v-show="this.$store.state.login==1">我的</span>
             <span class="mui-tab-label" v-show="this.$store.state.login==0">未登录</span>
-            </router-link>
+              </router-link>
         </nav> 
   </div>
 </template>
@@ -82,7 +82,7 @@
           if(to.path==='/home'){
             this.awd="首页"
           }else if(to.path==="/member"){
-            this.awd="会员"
+            this.awd="说说"
           }else if(to.path==='/shopcar'){
             this.awd="购物车"
           }else if(to.path==="/search"){
@@ -101,6 +101,8 @@
             this.awd="电影"
           }else if(to.path==='/home/video'){
             this.awd="视频"
+          }else if(to.path==='/home/fenxiang'){
+            this.awd="分享"
           }else{
             this.awd="详情"
           }

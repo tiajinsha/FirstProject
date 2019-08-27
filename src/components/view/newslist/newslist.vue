@@ -197,7 +197,7 @@ export default {
     }
     .nav{
         height: 120px;
-        border-bottom: 1px solid #ccc;
+       box-shadow: 0 0 1px #999;
         display: flex;
         align-content: center;
         justify-content: center;
@@ -227,7 +227,7 @@ export default {
     img{
         width:180px;
         height: 108px;
-        border:3px solid #ccc;
+        box-shadow: 0 0 6px #999;
     }
     .van-tabs__line{
         z-index:0 !important;

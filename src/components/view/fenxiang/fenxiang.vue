@@ -20,7 +20,7 @@ import { Popup } from 'vant';
 export default {
   data(){
     return{
-       fileList: [],
+      fileList: [],
       dbs:"",
       currentRate:0,
       data:[]
