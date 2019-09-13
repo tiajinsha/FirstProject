@@ -46,10 +46,10 @@ export default {
     methods:{
         alert(){
                 ImagePreview([
-                     `${this.DATA.login}img/downloa12d.jpg`,
-                     `${this.DATA.login}img/download.jpg`,
+                     `${this.DATA.login}`+"img/downloa12d.jpg",
+                /*      `${this.DATA.login}img/download.jpg`,
                      `${this.DATA.login}img/download1.jpg`,
-                     `${this.DATA.login}img/ShastaVideo_ZH-CN10595902413_1920x1080.jpg`
+                     `${this.DATA.login}img/ShastaVideo_ZH-CN10595902413_1920x1080.jpg` */
                   
                ]);
         },

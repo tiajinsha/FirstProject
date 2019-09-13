@@ -77,7 +77,6 @@ ul{
     width:100%;
     height:290px;
     display: flex;
-     box-shadow: 0 0 4px #999;
 }
 ul>li{
     width:196px;
@@ -101,6 +100,7 @@ ul>li p:nth-child(1){
     height: 37px;
     white-space: nowrap;
         text-overflow: ellipsis;
+        line-height:34px;
 }
 ul>li p:nth-child(2){
     margin-top: 20px;

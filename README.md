@@ -1,8 +1,8 @@
 #基于vue脚手架的移动端聚合网站
 =====
 示例网站:http://106.12.179.113
-###目录介绍
 ===
+###目录介绍
   1. src项目代码
     * assets-静态文件
     * components-子组件
@@ -11,8 +11,8 @@
     * data.vue 全局api接口
 ```
     /* 登陆接口 */
-  const login="http://106.12.179.113:3000/"
-  //const login="http://127.0.0.1:3000/"
+  const login="http://106.12.179.113/"
+  //const login="http://127.0.0.1"
   const key="d171ec3c4755783de7dc5b00fed440ee"
   //游戏
   const Gameurl=`http://api.tianapi.com/ai/?key=${key}&num=10&page=`

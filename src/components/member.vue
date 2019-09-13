@@ -1,7 +1,8 @@
 <template>
     <div>
       <div class="box" v-for="(elem,i) of list" :key="i">
-              <img v-for="(item,i) of elem" :key="i" :src="src+item" alt="">
+               <img v-for="(item,i) of elem" :key="i" :src="src+item" alt="">
+               
           <!--     <span>
                 <div></div>
                 <div>
@@ -14,6 +15,7 @@
       <van-button text="加载更多"  plain size="large" :loading=false type="danger" loading-text="加载中..." />
     </div>
 </template>
+
 <script>
 import { Lazyload } from 'mint-ui';
   export default{

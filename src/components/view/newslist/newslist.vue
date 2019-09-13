@@ -1,7 +1,7 @@
 <template>
     <div class="newlist">
         <van-tabs v-model="active" animated swipeable sticky> 
-        <van-tab    title="智能">
+        <van-tab    title="推荐">
             <div  v-infinite-scroll="loadMore" infinite-scroll-distance="20"  class="newsList" >
            <span  v-for="(elem,i) of list" :key="i">
               <div class="nav" @click="title(elem.url)">
@@ -31,7 +31,7 @@
            </span>
             </div>
         </van-tab>
-        <van-tab   title="汽车">
+        <van-tab   title="军事">
              <div  v-infinite-scroll="rend" infinite-scroll-distance="20"  class="newsList" >
            <span   v-for="(elem,i) of cartNew" :key="i">
               <div class="nav"  @click="title(elem.url)">
@@ -197,7 +197,6 @@ export default {
     }
     .nav{
         height: 120px;
-       box-shadow: 0 0 1px #999;
         display: flex;
         align-content: center;
         justify-content: center;
